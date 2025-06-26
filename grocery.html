@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>🛒 Grocery & Kitchen</h1>
+</header>
+<nav>
+    <a href="index.html">🏠 Home</a> |
+    <a href="cleaning.html">🧹 Cleaning</a> |
+    <a href="bills.html">💸 Bills</a> |
+    <a href="spending.html">💰 Spending</a>
+</nav>
+<div class="container">
+    <h2>Grocery List</h2>
+    <input type="text" id="groceryInput" placeholder="Enter item">
+    <button onclick="addItem()">Add Item</button>
+    <ul id="groceryList">
+        <li>Milk <button onclick="removeItem(this)">❌</button></li>
+        <li>Rice <button onclick="removeItem(this)">❌</button></li>
+        <li>Vegetables <button onclick="removeItem(this)">❌</button></li>
+    </ul>
+</div>
+<footer>
+    © 2025 Home Hub
+</footer>
+<script>
+function addItem() {
+    const input = document.getElementById("groceryInput");
+    const item = input.value.trim();
+    if (item !== "") {
+        const li = document.createElement("li");
+        li.innerHTML = item + ' <button onclick="removeItem(this)">❌</button>';
+        document.getElementById("groceryList").appendChild(li);
+        input.value = "";
+    }
+}
+function removeItem(button) {
+    const li = button.parentElement;
+    li.remove();
+}
+</script>
+</body>
+</html>

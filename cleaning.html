@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cleaning Tasks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>🧹 Cleaning Tasks</h1>
+</header>
+<nav>
+    <a href="index.html">🏠 Home</a> |
+    <a href="grocery.html">🛒 Grocery</a> |
+    <a href="bills.html">💸 Bills</a> |
+    <a href="spending.html">💰 Spending</a>
+</nav>
+<div class="container">
+    <h2>Cleaning Checklist</h2>
+    <ul id="taskList">
+        <li><input type="checkbox"> Vacuum Living Room</li>
+        <li><input type="checkbox"> Clean Kitchen Counter</li>
+        <li><input type="checkbox"> Bathroom Disinfection</li>
+    </ul>
+    <button onclick="resetTasks()">Reset Tasks</button>
+</div>
+<footer>
+    © 2025 Home Hub
+</footer>
+<script>
+function resetTasks() {
+    const tasks = document.querySelectorAll('#taskList input[type="checkbox"]');
+    tasks.forEach(task => task.checked = false);
+}
+</script>
+</body>
+</html>

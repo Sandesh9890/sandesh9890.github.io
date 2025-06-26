@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spending Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>💰 Spending Calculator</h1>
+</header>
+<nav>
+    <a href="index.html">🏠 Home</a> |
+    <a href="grocery.html">🛒 Grocery</a> |
+    <a href="cleaning.html">🧹 Cleaning</a> |
+    <a href="bills.html">💸 Bills</a>
+</nav>
+<div class="container">
+    <h2>Track Your Expenses</h2>
+    <input type="text" id="expenseName" placeholder="Expense Name (e.g., Groceries)">
+    <input type="number" id="expenseAmount" placeholder="Amount ₹">
+    <button onclick="addExpense()">Add Expense</button>
+    <h3>Expenses:</h3>
+    <ul id="expenseList"></ul>
+    <h3>Total Spending: ₹ <span id="total">0</span></h3>
+</div>
+<footer>
+    © 2025 Home Hub
+</footer>
+<script>
+let total = 0;
+function addExpense() {
+    const name = document.getElementById('expenseName').value.trim();
+    const amount = parseFloat(document.getElementById('expenseAmount').value);
+    if (name === '' || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid name and amount.');
+        return;
+    }
+    const li = document.createElement('li');
+    li.innerHTML = `${name} - ₹${amount} <button onclick="removeExpense(this, ${amount})">❌</button>`;
+    document.getElementById('expenseList').appendChild(li);
+    total += amount;
+    document.getElementById('total').innerText = total;
+    document.getElementById('expenseName').value = '';
+    document.getElementById('expenseAmount').value = '';
+}
+function removeExpense(button, amount) {
+    const li = button.parentElement;
+    li.remove();
+    total -= amount;
+    document.getElementById('total').innerText = total;
+}
+</script>
+</body>
+</html>

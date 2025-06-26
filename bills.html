@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bills</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>💸 Bills & Payments</h1>
+</header>
+<nav>
+    <a href="index.html">🏠 Home</a> |
+    <a href="grocery.html">🛒 Grocery</a> |
+    <a href="cleaning.html">🧹 Cleaning</a> |
+    <a href="spending.html">💰 Spending</a>
+</nav>
+<div class="container">
+    <h2>Bill Tracker</h2>
+    <input type="text" id="billInput" placeholder="Enter bill (e.g., Internet)">
+    <button onclick="addBill()">Add Bill</button>
+    <ul id="billList">
+        <li>Electricity - <span>Due</span> <button onclick="markPaid(this)">✅</button> <button onclick="removeBill(this)">❌</button></li>
+        <li>Water - <span>Due</span> <button onclick="markPaid(this)">✅</button> <button onclick="removeBill(this)">❌</button></li>
+    </ul>
+</div>
+<footer>
+    © 2025 Home Hub
+</footer>
+<script>
+function addBill() {
+    const input = document.getElementById("billInput");
+    const item = input.value.trim();
+    if (item !== "") {
+        const li = document.createElement("li");
+        li.innerHTML = item + ' - <span>Due</span> <button onclick="markPaid(this)">✅</button> <button onclick="removeBill(this)">❌</button>';
+        document.getElementById("billList").appendChild(li);
+        input.value = "";
+    }
+}
+function removeBill(button) {
+    const li = button.parentElement;
+    li.remove();
+}
+function markPaid(button) {
+    const span = button.parentElement.querySelector("span");
+    span.innerText = "Paid";
+}
+</script>
+</body>
+</html>
